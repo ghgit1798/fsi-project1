@@ -105,7 +105,7 @@ if not api_key:
     st.stop()
 
 st.caption("아래 입력창에 궁금한 보안 질문을 자유롭게 입력해 주세요.")
-user_question = st.chat_input("예: 내 계정이 털린 것 같은데 먼저 뭘 해야 해?")
+user_question = st.chat_input("예: 내 계정이 해킹당한 것 같은데 먼저 뭘 해야 해?")
 
 if user_question:
     st.write(f"질문: {user_question}")
