@@ -103,9 +103,6 @@ if user_question:
     except GraphRecursionError:
         st.error("워크플로우 실행 중 반복 오류가 발생했습니다. 다시 시도해 주세요.")
 
-st.divider()
-
-
 def render_benchmark_summary(state_key: str):
     summary = st.session_state.get(state_key)
     if not summary:
@@ -147,8 +144,9 @@ def render_benchmark_summary(state_key: str):
         st.dataframe(preview_rows, use_container_width=True)
 
 
-with st.expander("> 오픈소스 벤치마크", expanded=False):
-    st.caption("모든 벤치마크는 랜덤 시드 고정(42), 샘플 30개로 평가합니다.")
+st.divider()
+with st.sidebar.expander("고급 기능 > 오픈소스 벤치마크", expanded=False):
+    st.caption("필요할 때만 실행하세요. 랜덤 시드 42, 샘플 30개 고정입니다.")
 
     if st.button("MMLU 벤치마크 실행 (30문항)"):
         with st.spinner("MMLU 벤치마크 실행 중..."):
