@@ -35,33 +35,47 @@ st.markdown(
 
     .hero-card {
         border-radius: 16px;
-        padding: 1.2rem 1.3rem;
+        padding: 1.05rem 1.15rem;
         background: linear-gradient(135deg, #10203a 0%, #1f4b7a 65%, #2b6d8c 100%);
         color: #f9fbff;
         box-shadow: 0 12px 30px rgba(16, 32, 58, 0.22);
         margin-bottom: 1rem;
+        overflow: hidden;
     }
 
     .hero-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 1.6rem;
+        font-size: clamp(1.2rem, 2.3vw, 1.45rem);
         font-weight: 700;
-        margin-bottom: 0.35rem;
+        line-height: 1.25;
+        margin-bottom: 0.3rem;
     }
 
     .hero-body {
-        font-size: 0.95rem;
-        line-height: 1.45;
+        font-size: clamp(0.85rem, 1.45vw, 0.92rem);
+        line-height: 1.5;
         opacity: 0.95;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+    }
+
+    .hint-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.28rem;
+        margin-top: 0.22rem;
     }
 
     .hint-chip {
-        display: inline-block;
+        display: inline-flex;
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.16);
-        padding: 0.28rem 0.62rem;
-        margin: 0.25rem 0.18rem 0 0;
-        font-size: 0.82rem;
+        padding: 0.24rem 0.55rem;
+        font-size: clamp(0.73rem, 1.2vw, 0.8rem);
+        max-width: 100%;
+        line-height: 1.35;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
     }
     </style>
     """,
@@ -76,7 +90,7 @@ st.markdown(
         일상에서 자주 겪는 보안 고민을 쉽게 설명하고, 지금 바로 실천할 수 있는 대응 방법을 안내합니다.
         질문 내용에 따라 <b>AI 보안</b>, <b>단말 보안</b>, <b>계정 보안</b>, <b>일반 보안</b> 상담으로 자동 분기됩니다.
       </div>
-      <div>
+      <div class="hint-wrap">
         <span class="hint-chip">예시: "수상한 로그인 알림이 왔어요"</span>
         <span class="hint-chip">예시: "스마트폰 해킹이 의심돼요"</span>
         <span class="hint-chip">예시: "프롬프트 인젝션이 뭐예요?"</span>
@@ -145,7 +159,7 @@ def render_benchmark_summary(state_key: str):
 
 
 st.divider()
-with st.sidebar.expander("고급 기능 > 오픈소스 벤치마크", expanded=False):
+with st.sidebar.expander("참고", expanded=False):
     st.caption("필요할 때만 실행하세요. 랜덤 시드 42, 샘플 30개 고정입니다.")
 
     if st.button("MMLU 벤치마크 실행 (30문항)"):
